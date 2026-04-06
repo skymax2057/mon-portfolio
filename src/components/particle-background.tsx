@@ -25,17 +25,19 @@ export function ParticleBackground() {
 
   // Generate particles only on client side after mount
   useEffect(() => {
-    setMounted(true);
-    const newParticles: Particle[] = Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.floor(Math.random() * 100),
-      y: Math.floor(Math.random() * 100),
-      size: Math.floor(Math.random() * 4 + 2),
-      duration: Math.floor(Math.random() * 20 + 20),
-      delay: Math.floor(Math.random() * 5),
-      randomX: Math.random(),
-    }));
-    setParticles(newParticles);
+    requestAnimationFrame(() => {
+      const newParticles: Particle[] = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        x: Math.floor(Math.random() * 100),
+        y: Math.floor(Math.random() * 100),
+        size: Math.floor(Math.random() * 4 + 2),
+        duration: Math.floor(Math.random() * 20 + 20),
+        delay: Math.floor(Math.random() * 5),
+        randomX: Math.random(),
+      }));
+      setParticles(newParticles);
+      setMounted(true);
+    });
   }, []);
 
   useEffect(() => {
