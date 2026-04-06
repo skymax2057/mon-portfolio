@@ -1,0 +1,17 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export function formatDate(date: string | Date): string {
+  return new Date(date).toLocaleDateString("fr-FR", {
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export function absoluteUrl(path: string): string {
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
+}
