@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { Heart, Code2, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -45,8 +47,19 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="/" className="text-xl font-bold gradient-text">
-              Portfolio
+            <Link href="/" className="flex items-center gap-3 group">
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: -5 }}
+                className="relative w-10 h-10 rounded-xl overflow-hidden"
+              >
+                <Image
+                  src="/LogoRS.png"
+                  alt="Logo RS"
+                  fill
+                  className="object-contain p-1"
+                />
+              </motion.div>
+              <span className="text-xl font-bold gradient-text">Maxwell</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               Développeur Full Stack spécialisé dans les applications Web, Mobile et Desktop.
@@ -82,8 +95,8 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground flex items-center gap-1">
-            © {new Date().getFullYear()} Portfolio. Fait avec
-            <Heart className="w-4 h-4 text-destructive fill-destructive" />
+            © {new Date().getFullYear()} Maxwell Yoan. Fait avec
+            <Heart className="w-4 h-4 text-destructive fill-destructive animate-pulse" />
             et Next.js
           </p>
 

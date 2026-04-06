@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -47,9 +48,24 @@ export function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-xl font-bold gradient-text tracking-tight"
+              className="flex items-center gap-3 group"
             >
-              Portfolio
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-indigo/20"
+              >
+                <Image
+                  src="/LogoRS.png"
+                  alt="Logo RS"
+                  fill
+                  className="object-contain p-1 bg-linear-to-br from-indigo/20 to-cyan/20"
+                  priority
+                />
+              </motion.div>
+              <span className="text-xl font-bold gradient-text tracking-tight hidden sm:block">
+                Maxwell
+              </span>
             </Link>
 
             {/* Desktop Navigation */}

@@ -4,6 +4,8 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/providers";
+import { ParticleBackground } from "@/components/particle-background";
+import { CustomCursor } from "@/components/custom-cursor";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -38,15 +40,17 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-background text-foreground font-sans antialiased">
+      <body className="min-h-screen bg-background text-foreground font-sans antialiased cursor-none md:cursor-auto">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
+          <ParticleBackground />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 relative z-10">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
